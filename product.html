@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bloom Flower Shop - Products</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🌸 Bloom Flower Shop</div>
+
+       <div class="menu">
+    <a href="file:///C:/FSD_Project%20-%20Copy/home.html">Home</a>
+    <a href="product.html">Flowers</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">🛒 Cart</a>
+</div>    </nav>
+
+
+    <!-- Page Heading -->
+    <section class="page-title">
+        <h1>Our Beautiful Flowers 🌷</h1>
+        <p>Fresh flowers and beautiful bouquets for every special moment</p>
+    </section>
+
+
+    <!-- ==================== FLOWERS ==================== -->
+
+    <section class="products-section">
+
+        <h2>🌹 Fresh Flowers</h2>
+
+        <div class="product-container">
+
+            <!-- Red Rose -->
+            <div class="product-card">
+                <img src="images/red-rose.jpg" alt="Red Rose">
+                <h3>Red Rose</h3>
+                <p>Beautiful fresh red rose</p>
+                <h4>₹50</h4>
+
+                <button onclick="addToCart('Red Rose', 50, 'images/red-rose.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Pink Rose -->
+            <div class="product-card">
+                <img src="images/pink-rose.jpg" alt="Pink Rose">
+                <h3>Pink Rose</h3>
+                <p>Lovely pink rose</p>
+                <h4>₹60</h4>
+
+                <button onclick="addToCart('Pink Rose', 60, 'images/pink-rose.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- White Lily -->
+            <div class="product-card">
+                <img src="images/white-lily.jpg" alt="White Lily">
+                <h3>White Lily</h3>
+                <p>Elegant and beautiful white lily</p>
+                <h4>₹80</h4>
+
+                <button onclick="addToCart('White Lily', 80, 'images/white-lily.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Pink Tulip -->
+            <div class="product-card">
+                <img src="images/pink-tulip.jpg" alt="Pink Tulip">
+                <h3>Pink Tulip</h3>
+                <p>Beautiful fresh pink tulip</p>
+                <h4>₹100</h4>
+
+                <button onclick="addToCart('Pink Tulip', 100, 'images/pink-tulip.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Sunflower -->
+            <div class="product-card">
+                <img src="images/sunflower.jpg" alt="Sunflower">
+                <h3>Sunflower</h3>
+                <p>Bright and cheerful sunflower</p>
+                <h4>₹70</h4>
+
+                <button onclick="addToCart('Sunflower', 70, 'images/sunflower.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================== BOUQUETS ==================== -->
+
+    <section class="products-section">
+
+        <h2>💐 Beautiful Bouquets</h2>
+
+        <div class="product-container">
+
+            <!-- Rose Bouquet -->
+            <div class="product-card">
+                <img src="images/rose-bouquet.jpg" alt="Rose Bouquet">
+                <h3>Rose Bouquet</h3>
+                <p>Elegant bouquet of fresh roses</p>
+                <h4>₹399</h4>
+
+                <button onclick="addToCart('Rose Bouquet', 399, 'images/rose-bouquet.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Tulip Bouquet -->
+            <div class="product-card">
+                <img src="images/tulip-bouquet.jpg" alt="Tulip Bouquet">
+                <h3>Tulip Bouquet</h3>
+                <p>Beautiful colourful tulip arrangement</p>
+                <h4>₹499</h4>
+
+                <button onclick="addToCart('Tulip Bouquet', 499, 'images/tulip-bouquet.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Sunflower Bouquet -->
+            <div class="product-card">
+                <img src="images/sunflower-bouquet.jpg" alt="Sunflower Bouquet">
+                <h3>Sunflower Bouquet</h3>
+                <p>Bright and cheerful sunflower bouquet</p>
+                <h4>₹599</h4>
+
+                <button onclick="addToCart('Sunflower Bouquet', 599, 'images/sunflower-bouquet.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Mixed Bouquet -->
+            <div class="product-card">
+                <img src="images/mixed-bouquet.jpg" alt="Mixed Flower Bouquet">
+                <h3>Mixed Flower Bouquet</h3>
+                <p>Beautiful combination of fresh flowers</p>
+                <h4>₹699</h4>
+
+                <button onclick="addToCart('Mixed Flower Bouquet', 699, 'images/mixed-bouquet.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+
+            <!-- Premium Bouquet -->
+            <div class="product-card">
+                <img src="images/premium-bouquet.jpg" alt="Premium Bouquet">
+                <h3>Premium Bouquet</h3>
+                <p>Premium flowers for special occasions</p>
+                <h4>₹899</h4>
+
+                <button onclick="addToCart('Premium Bouquet', 899, 'images/premium-bouquet.jpg')">
+                    Add to Cart 🛒
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Bloom Flower Shop | Made with ❤️</p>
+    </footer>
+
+
+    <!-- JavaScript -->
+   <script>
+
+function addToCart(name, price, image) {
+
+    var cart = JSON.parse(localStorage.getItem("bloomCart")) || [];
+
+    var found = false;
+
+    for (var i = 0; i < cart.length; i++) {
+
+        if (cart[i].name === name) {
+
+            cart[i].quantity = cart[i].quantity + 1;
+            found = true;
+            break;
+
+        }
+    }
+
+    if (found === false) {
+
+        cart.push({
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+
+    }
+
+    localStorage.setItem("bloomCart", JSON.stringify(cart));
+
+    alert(name + " added to cart! 🌸");
+
+}
+
+</script>
+</body>
+</html>

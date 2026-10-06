@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Bloom Flower Shop - Cart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+            🌸 Bloom Flower Shop
+        </div>
+
+        <div class="menu">
+
+            <a href="index.html">Home</a>
+
+            <a href="product.html">Flowers</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+            <a href="cart.html">🛒 Cart</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Page Title -->
+
+    <section class="page-title">
+
+        <h1>🛒 Your Shopping Cart</h1>
+
+        <p>Review your selected flowers</p>
+
+    </section>
+
+
+    <!-- Cart -->
+
+    <section class="cart-section">
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+
+            <h2>Total: ₹<span id="cartTotal">0</span></h2>
+
+            <button onclick="placeOrder()" class="order-btn">
+                Place Order 🌸
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>© 2026 Bloom Flower Shop | Made with ❤️</p>
+
+    </footer>
+
+
+    <!-- Cart JavaScript -->
+
+    <script>
+
+        function displayCart() {
+
+            var cart = JSON.parse(localStorage.getItem("bloomCart")) || [];
+
+            var cartItems = document.getElementById("cartItems");
+
+            var cartTotal = document.getElementById("cartTotal");
+
+            cartItems.innerHTML = "";
+
+            var total = 0;
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<div class='empty-cart'>" +
+                    "<h2>Your cart is empty 🌸</h2>" +
+                    "<p>Add some beautiful flowers to your cart.</p>" +
+                    "<a href='product.html' class='btn'>Shop Flowers</a>" +
+                    "</div>";
+
+                cartTotal.innerHTML = "0";
+
+                return;
+
+            }
+
+
+            for (var i = 0; i < cart.length; i++) {
+
+                var item = cart[i];
+
+                var itemTotal = item.price * item.quantity;
+
+                total = total + itemTotal;
+
+
+                cartItems.innerHTML +=
+
+                    "<div class='cart-item'>" +
+
+                    "<img src='" + item.image + "' alt='" + item.name + "'>" +
+
+                    "<div class='cart-info'>" +
+
+                    "<h3>" + item.name + "</h3>" +
+
+                    "<p>Price: ₹" + item.price + "</p>" +
+
+                    "<div class='quantity'>" +
+
+                    "<button onclick='decreaseQuantity(" + i + ")'>−</button>" +
+
+                    "<span>" + item.quantity + "</span>" +
+
+                    "<button onclick='increaseQuantity(" + i + ")'>+</button>" +
+
+                    "</div>" +
+
+                    "<h3>₹" + itemTotal + "</h3>" +
+
+                    "<button class='remove-btn' onclick='removeItem(" + i + ")'>" +
+                    "Remove" +
+                    "</button>" +
+
+                    "</div>" +
+
+                    "</div>";
+
+            }
+
+
+            cartTotal.innerHTML = total;
+
+        }
+
+
+        function increaseQuantity(index) {
+
+            var cart = JSON.parse(localStorage.getItem("bloomCart")) || [];
+
+            cart[index].quantity++;
+
+            localStorage.setItem("bloomCart", JSON.stringify(cart));
+
+            displayCart();
+
+        }
+
+
+        function decreaseQuantity(index) {
+
+            var cart = JSON.parse(localStorage.getItem("bloomCart")) || [];
+
+            if (cart[index].quantity > 1) {
+
+                cart[index].quantity--;
+
+            } else {
+
+                cart.splice(index, 1);
+
+            }
+
+            localStorage.setItem("bloomCart", JSON.stringify(cart));
+
+            displayCart();
+
+        }
+
+
+        function removeItem(index) {
+
+            var cart = JSON.parse(localStorage.getItem("bloomCart")) || [];
+
+            cart.splice(index, 1);
+
+            localStorage.setItem("bloomCart", JSON.stringify(cart));
+
+            displayCart();
+
+        }
+
+
+        function placeOrder() {
+
+            var cart = JSON.parse(localStorage.getItem("bloomCart")) || [];
+
+            if (cart.length === 0) {
+
+                alert("Your cart is empty! 🌸");
+
+                return;
+
+            }
+
+            alert("Thank you for your order! 🌸 Your order has been placed successfully.");
+
+            localStorage.removeItem("bloomCart");
+
+            displayCart();
+
+        }
+
+
+        displayCart();
+
+    </script>
+
+
+</body>
+</html>
